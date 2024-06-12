@@ -43,7 +43,7 @@ jobs:
         run: |
           python taifex.py
           
-      - name: commit
+      - name: commit 1
         run: |
           # setup git
           git config --local user.name "GitHub Actions Bot"
@@ -52,7 +52,9 @@ jobs:
           timestamp=$(date)
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
-
+          
+      - name: commit 2
+        run: |
           #git remote remove origin
           git remote set-url origin https://github.com/white5168/taifex.git
           git add -A
