@@ -16,7 +16,7 @@ payload = {
 }
 
 data = []
-base = dt.datetime.today() - relativedelta(months = 6)
+base = dt.datetime.today() - relativedelta(months = 2)
 while base <= dt.datetime.today():
     payload['queryStartDate'] = base.replace(day = 1).strftime('%Y/%m/%d')
     payload['queryEndDate'] = (base.replace(day = 1) + 
