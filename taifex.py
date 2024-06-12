@@ -25,7 +25,7 @@ plt.savefig('pcratio.png', dpi = 200, bbox_inches = 'tight')
 
 content = '''
 ## {} 選擇權 Put/Call Ratios
-[]('pcratio.png')
+![](pcratio.png)
 '''
 with open('README.md', 'w') as f:
     f.write(content.format(dt.datetime.today().strftime('%Y/%m/%d')))
