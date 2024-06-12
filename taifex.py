@@ -22,3 +22,10 @@ plt.xlabel('日期', fontproperties = font, fontsize = 12)
 plt.ylabel('買賣權未平倉量比率%', fontproperties = font, fontsize = 12)
 plt.title('買賣權未平倉量比率%', fontproperties = font, fontsize = 14)
 plt.savefig('pcratio.png', dpi = 200, bbox_inches = 'tight')
+
+content = '''
+## {} 選擇權 Put/Call Ratios
+[]('pcratio.png')
+'''
+with open('README.md', 'w') as f:
+    f.writeit(content.format(dt.datetime.today.strftime('%Y/%m/%d')))
