@@ -57,7 +57,8 @@ jobs:
           git add -A
           timestamp=$(date)
           git commit -m "Latest data: ${timestamp}" || exit 0
-          git push
+          git branch -M main
+          git push -u origin main
           
       #- name: commit
       #  run: |
