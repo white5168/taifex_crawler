@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          #pip install -r requirements.txt
+          pip install -r requirements.txt
           
       - name: execute py script
         run: |
@@ -46,9 +46,9 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
 
-      #- name: commit
-      #  run: |
+      - name: commit
+        run: |
           # Stage the file, commit and push
-          #git add results.csv
-          #git commit -m "update results"
-          #git push origin main
+          git add pcratio.png
+          git commit -m "update results"
+          git push origin main
