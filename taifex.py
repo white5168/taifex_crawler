@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
 from dateutil.relativedelta import relativedelta
 
-font = FontProperties(fname = r'C:\Windows\Fonts\msyh.ttc')
+font = FontProperties(fname = r'C:\Windows\Fonts\MSYH.TTC')
 url = "https://www.taifex.com.tw/cht/3/pcRatio"
 payload = {
     "queryStartDate": '2024/05/13',
