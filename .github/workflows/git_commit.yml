@@ -43,7 +43,7 @@ jobs:
         run: |
           git config --local user.name "GitHub Actions Bot"
           git config --local user.email "<>"
-          git remote set-url origin https://white5168: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@github.com/white5168/taifex
+          git remote set-url origin https://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@github.com/white5168/taifex.git
           git remote -v
           git add pcratio.png
           timestamp=$(date)
