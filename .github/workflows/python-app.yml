@@ -53,6 +53,10 @@ jobs:
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
           
+          git remote add origin git@github.com:white5168/taifex.git
+          git branch -M main
+          git push -u origin main
+          
       #- name: commit
       #  run: |
           # Stage the file, commit and push
