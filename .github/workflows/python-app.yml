@@ -52,7 +52,8 @@ jobs:
           timestamp=$(date)
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
-          
+
+          git remote remove origin
           git remote set-url origin https://github.com/white5168/taifex.git
           git add -A
           timestamp=$(date)
