@@ -49,4 +49,4 @@ jobs:
           timestamp=$(date)
           git commit -m "Latest data: ${timestamp}" || exit 0
 
-          git push -u origin main
+          git push demo2
