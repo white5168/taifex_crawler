@@ -48,5 +48,4 @@ jobs:
           git add pcratio.png
           timestamp=$(date)
           git commit -m "Latest data: ${timestamp}" || exit 0
-
           git push -u origin main
