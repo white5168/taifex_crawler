@@ -15,6 +15,7 @@ payload = {
     'queryEndDate': '2024/06/12'
 }
 
+headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'}
 data = []
 base = dt.datetime.today() - relativedelta(months = 2)
 while base <= dt.datetime.today():
@@ -23,7 +24,7 @@ while base <= dt.datetime.today():
                relativedelta(months = 1) - 
                relativedelta(days = 1)).strftime('%Y/%m/%d')
 
-    res = requests.post(url, data = payload)
+    res = requests.post(url, data = payload, headers = headers)
     data.append(pd.read_html(res.text)[0])
     time.sleep(10)
     base += relativedelta(months = 1)
