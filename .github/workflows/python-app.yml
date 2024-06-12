@@ -43,7 +43,7 @@ jobs:
         run: |
           python taifex.py
           
-      - name: setup git config
+      - name: commit
         run: |
           # setup git
           git config --local user.name "GitHub Actions Bot"
