@@ -4,6 +4,7 @@ import datetime as dt
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
 from dateutil.relativedelta import relativedelta
+import time
 
 today = dt.datetime.today().strftime('%Y%m%d')
 font = FontProperties(fname = r'MSYH.TTC')
@@ -24,6 +25,7 @@ while base <= dt.datetime.today():
 
     res = requests.post(url, data = payload)
     data.append(pd.read_html(res.text)[0])
+    time.sleep(5)
     base += relativedelta(months = 1)
 
 df = pd.concat(data)
