@@ -4,7 +4,7 @@ import datetime as dt
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
 
-font = FontProperties(fname = r'msyh.ttc')
+font = FontProperties(fname = r'MSYH.TTC')
 url = "https://www.taifex.com.tw/cht/3/pcRatio"
 payload = {
     "queryStartDate": "2024/05/13",
