@@ -59,7 +59,7 @@ jobs:
           
       - name: commit 2
         run: |
-          #git remote remove origin
+          git remote remove origin
           #git remote set-url origin https://github.com/white5168/taifex.git
           git remote add origin https://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@github.com/white5168/taifex.git
           git add -A
