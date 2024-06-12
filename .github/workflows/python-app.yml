@@ -54,6 +54,7 @@ jobs:
           git push
           
           git remote set-url origin https://github.com/white5168/taifex.git
+          git add -A
           timestamp=$(date)
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push -u origin main
