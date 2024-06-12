@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
 from dateutil.relativedelta import relativedelta
 
+today = dt.datetime.today().strftime('%Y%m%d')
 font = FontProperties(fname = r'MSYH.TTC')
 url = "https://www.taifex.com.tw/cht/3/pcRatio"
 payload = {
@@ -33,7 +34,7 @@ plt.xticks(rotation = 30)
 plt.legend(['買賣權未平倉量比率%'], prop = font, fontsize = 12)
 plt.xlabel('日期', fontproperties = font, fontsize = 12)
 plt.ylabel('買賣權未平倉量比率%', fontproperties = font, fontsize = 12)
-plt.title('{}買賣權未平倉量比率%'.format(dt.datetime.today().strftime('%Y%m%d')), fontproperties = font, fontsize = 14)
+plt.title('{}買賣權未平倉量比率%'.format(today), fontproperties = font, fontsize = 14)
 plt.savefig('pcratio.png', dpi = 200, bbox_inches = 'tight')
 
 content = '''
@@ -41,4 +42,4 @@ content = '''
 ![](pcratio.png)
 '''
 with open('README.md', 'w') as f:
-    f.write(content.format())
+    f.write(content.format(today))
