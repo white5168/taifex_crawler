@@ -28,4 +28,4 @@ content = '''
 []('pcratio.png')
 '''
 with open('README.md', 'w') as f:
-    f.write(content.format(dt.datetime.today.strftime('%Y/%m/%d')))
+    f.write(content.format(dt.datetime.today().strftime('%Y/%m/%d')))
