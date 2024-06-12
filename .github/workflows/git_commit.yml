@@ -43,7 +43,7 @@ jobs:
         run: |
           #git remote remove origin
           git remote set-url origin https://github.com/white5168/taifex.git
-          git add -A
+          git add pcratio.png
           timestamp=$(date)
           git commit -m "Latest data: ${timestamp}" || exit 0
           git branch -M main
