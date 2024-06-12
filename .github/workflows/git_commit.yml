@@ -1,4 +1,4 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
+-# This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
 name: Git
@@ -43,10 +43,10 @@ jobs:
         run: |
           git config --local user.name "GitHub Actions Bot"
           git config --local user.email "<>"
-          git remote add demo2 https://<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>@github.com/white5168/taifex
+          git remote set-url origin https://white5168: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@github.com/white5168/taifex
           git remote -v
           git add pcratio.png
           timestamp=$(date)
           git commit -m "Latest data: ${timestamp}" || exit 0
 
-          git push --force demo2 main
+          git push -u origin main
