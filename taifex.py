@@ -25,7 +25,7 @@ while base <= dt.datetime.today():
 
     res = requests.post(url, data = payload)
     data.append(pd.read_html(res.text)[0])
-    time.sleep(5)
+    time.sleep(10)
     base += relativedelta(months = 1)
 
 df = pd.concat(data)
