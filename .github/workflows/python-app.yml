@@ -45,8 +45,8 @@ jobs:
       - name: setup git config
         run: |
           # setup git
-          git config user.name "Amin"
-          git config user.email "white_5168@hotmail.com"
+          git config --local user.name "Amin"
+          git config --local user.email "white_5168@hotmail.com"
 
       - name: commit
         run: |
