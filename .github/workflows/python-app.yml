@@ -53,8 +53,9 @@ jobs:
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
           
-          git remote add origin git@github.com:white5168/taifex.git
-          git branch -M main
+          git remote set-url origin https://github.com/white5168/taifex.git
+          timestamp=$(date)
+          git commit -m "Latest data: ${timestamp}" || exit 0
           git push -u origin main
           
       #- name: commit
