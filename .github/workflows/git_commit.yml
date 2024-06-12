@@ -43,7 +43,7 @@ jobs:
         run: |
           git config --local user.name "GitHub Actions Bot"
           git config --local user.email "<>"
-          git remote add demo2 https://<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@>github.com/white5168/taifex
+          git remote add demo2 https://<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>@github.com/white5168/taifex
           git remote -v
           git add pcratio.png
           timestamp=$(date)
