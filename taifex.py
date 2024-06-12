@@ -9,8 +9,9 @@ today = dt.datetime.today().strftime('%Y%m%d')
 font = FontProperties(fname = r'MSYH.TTC')
 url = "https://www.taifex.com.tw/cht/3/pcRatio"
 payload = {
-    "queryStartDate": '2024/05/13',
-    "queryEndDate": '2024/06/12'
+    'down_type':'',
+    'queryStartDate': '2024/05/13',
+    'queryEndDate': '2024/06/12'
 }
 
 data = []
@@ -21,7 +22,7 @@ while base <= dt.datetime.today():
                relativedelta(months = 1) - 
                relativedelta(days = 1)).strftime('%Y/%m/%d')
 
-    res = requests.get(url, params = payload)
+    res = requests.post(url, data = payload)
     data.append(pd.read_html(res.text)[0])
     base += relativedelta(months = 1)
 
