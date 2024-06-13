@@ -29,7 +29,7 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: "3.10"
-
+          
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -49,15 +49,10 @@ jobs:
             rm -f taifex/*.* taifex/*
             rmdir taifex
           fi
-  
-      - name: execute py script
+          
+      - name: Execute py script
         run: |
           python taifex.py
-
-      - name: Configure Git
-        run: |
-          git config --global user.email "<>"
-          git config --global user.name "GitHub Actions Bot"
 
       - name: Get current time
         uses: josStorer/get-current-time@v2.0.2
@@ -65,22 +60,38 @@ jobs:
         with:
           format: YYYY-MM-DD HH:mm:SS
           utcOffset: "+08:00"
-          
-      - name: commit local repository
+	
+      - name: Commit local repository
         run: |
           # setup git
+          git config --global user.email "<>"
+          git config --global user.name "GitHub Actions Bot"
           git add -A
+          #timestamp=$(date)
+          #git commit -m "更新時間: ${timestamp}" || exit 0
           git commit -m "更新時間: ${{ steps.current-time.outputs.formattedTime }}" || exit 0
           git push
 
-      - name: Clone target repository
-        run: git clone https://github.com/white5168/taifex.git
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          repository: white5168/taifex
+          token: ${{ secrets.ACCESS_GITHUB_TOKEN }} 
 
-      - name: Move files to target repository
+      - name: Commit and push changes
         run: |
-          cp pcratio.png taifex
-          cp README.md taifex
+          mkdir taifex
+          if [ -f "pcratio.png" ]; then
+              cp pcratio.png taifex
+          fi
+          if [ -f "README.md" ]; then
+              cp README.md taifex
+          fi
+
           cd taifex
+          git config --global user.email "<>"
+          git config --global user.name "GitHub Actions Bot"
+          git reset HEAD
           git add .
           git commit -m "更新時間: ${{ steps.current-time.outputs.formattedTime }}"
-          git push https://white5168:${{secrets.ACCESS_GITHUB_TOKEN}}@github.com/white5168/taifex.git          
+          git push
