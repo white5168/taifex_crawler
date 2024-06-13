@@ -53,15 +53,12 @@ jobs:
       - name: Execute py script
         run: |
           python taifex.py
-          
-      - name: Configure Git
-        run: |
-          git config --global user.email "<>"
-          git config --global user.name "GitHub Actions Bot"
-       
+
       - name: Commit local repository
         run: |
           # setup git
+          git config --global user.email "<>"
+          git config --global user.name "GitHub Actions Bot"
           git add -A
           timestamp=$(date)
           git commit -m "更新時間: ${timestamp}" || exit 0
