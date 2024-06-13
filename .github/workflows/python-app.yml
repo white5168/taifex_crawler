@@ -69,7 +69,7 @@ jobs:
       - name: Checkout target repository
         uses: actions/checkout@v4
         with:
-          repository: white5168/taifex
+          repository: white5168/taifex.git
           token: ${{ secrets.ACCESS_GITHUB_TOKEN }} 
 
       - name: Commit and push another repository
