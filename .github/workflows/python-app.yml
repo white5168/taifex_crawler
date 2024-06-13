@@ -47,13 +47,20 @@ jobs:
         run: |
           git config --global user.email "<>"
           git config --global user.name "GitHub Actions Bot"
-       
+
+      - name: Get current time
+        uses: josStorer/get-current-time@v2.0.2
+        id: current-time
+        with:
+          format: YYYY-MM-DD HH:mm:SS
+          utcOffset: "+08:00"
+    
       - name: commit local repository
         run: |
           # setup git
           git add -A
           timestamp=$(date)
-          git commit -m "Latest data: ${timestamp}" || exit 0
+          git commit -m "Latest data: ${{ steps.current-time.outputs.formattedTime }}" || exit 0
           git push
 
       - name: Clone target repository
