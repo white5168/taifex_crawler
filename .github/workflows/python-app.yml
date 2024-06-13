@@ -68,8 +68,8 @@ jobs:
           
       - name: Move files to target repository
         run: |
-          cp -r pcratio.png taifex
-          cp -r README.md taifex
+          cp -r pcratio.png ./taifex
+          cp -r README.md ./taifex
           cd taifex
           git add .
           git commit -m "Add files via GitHub Actions"
