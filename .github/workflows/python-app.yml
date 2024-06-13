@@ -87,6 +87,6 @@ jobs:
           if git diff-index --quiet HEAD --; then
             echo "No changes to commit."
           else
-            git commit -m "更新時間: ${{ steps.current-time.outputs.formattedTime }}" || exit 0
+            git commit -m "更新時間: ${{ steps.current-time.outputs.formattedTime }}" 
             git push
           fi
