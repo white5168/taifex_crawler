@@ -63,7 +63,7 @@ jobs:
         uses: josStorer/get-current-time@v2.0.2
         id: current-time
         with:
-          format: YYYYMMDD-HHmmSS
+          format: YYYY-MM-DD HH:mm:SS
           utcOffset: "+08:00"
           
       - name: commit local repository
