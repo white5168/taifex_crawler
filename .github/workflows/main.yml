@@ -39,7 +39,9 @@ jobs:
 
       - name: Commit and push another repository
         run: |
-          mkdir taifex
+          if [! -d "taifex"]; then
+              mkdir taifex
+          fi
           if [ -f "pcratio.png" ]; then
               cp pcratio.png taifex
           fi
