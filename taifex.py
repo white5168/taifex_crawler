@@ -39,6 +39,7 @@ plt.legend(['買賣權未平倉量比率%'], prop = font, fontsize = 12)
 plt.xlabel('日期', fontproperties = font, fontsize = 12)
 plt.ylabel('買賣權未平倉量比率%', fontproperties = font, fontsize = 12)
 plt.title('{}買賣權未平倉量比率%'.format(today), fontproperties = font, fontsize = 14)
+plt.annotate("{}".format(dt.datetime.now().timestamp()), (0, 0))
 plt.savefig('pcratio.png', dpi = 200, bbox_inches = 'tight')
 print('pcratio.png 產生')
 
