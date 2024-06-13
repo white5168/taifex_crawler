@@ -91,8 +91,7 @@ jobs:
           cd taifex
           git config --global user.email "<>"
           git config --global user.name "GitHub Actions Bot"
-          git reset HEAD
-          git add .
+          git add -A
           if git diff-index --quiet HEAD --; then
             echo "No changes to commit."
           else
