@@ -54,7 +54,7 @@ jobs:
       - name: Execute py script
         run: |
           python taifex.py
-          echo $pwd
+          echo $(cd $(dirname $0);pwd)
 
       - name: Get current time
         uses: josStorer/get-current-time@v2.0.2
@@ -83,7 +83,7 @@ jobs:
           
       - name: Execute py script
         run: |
-          echo $pwd
+          echo $(cd $(dirname $0);pwd)
           python taifex.py
           
       - name: Commit and push another repository
