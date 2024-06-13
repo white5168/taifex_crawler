@@ -69,21 +69,17 @@ jobs:
       - name: Checkout target repository
         uses: actions/checkout@v4
         with:
-          repository: white5168/taifex.git
+          repository: white5168/taifex
           token: ${{ secrets.ACCESS_GITHUB_TOKEN }} 
 
       - name: Commit and push another repository
         run: |
-          #mkdir taifex
-          #if [ -f "pcratio.png" ]; then
-          #    cp pcratio.png taifex
-          #fi
-          #if [ -f "README.md" ]; then
-          #    cp README.md taifex
-          #fi
-          #cd taifex
-
-          git reset HEAD
+          mkdir taifex
+          cp pcratio.png taifex
+          cp README.md taifex
+          cd taifex
+          git config --global user.email "<>"
+          git config --global user.name "GitHub Actions Bot"
           git add .
           #timestamp=$(date)
           #git commit -m "更新時間: ${timestamp}" || exit 0
