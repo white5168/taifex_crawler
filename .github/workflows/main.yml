@@ -1,0 +1,45 @@
+name: Test Get flow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '*/2 * * * *'
+    
+permissions:
+  contents: write
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configure git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+    
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          repository: white5168/taifex
+          token: ${{ secrets.ACCESS_GITHUB_TOKEN }} 
+          path: taifex
+
+      - name: Commit and push another repository
+        run: |
+          mkdir taifex
+          if [ -f "pcratio.png" ]; then
+              cp pcratio.png taifex
+          fi
+          if [ -f "README.md" ]; then
+              cp README.md taifex
+          fi
+          cd taifex
+
+          git add .
+          git commit -m "更新時間: ${{ steps.current-time.outputs.formattedTime }}"
+          git push origin main
