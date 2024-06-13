@@ -35,7 +35,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install lxml
           pip install -r requirements.txt
-
+		  
       - name: Remove file and dir
         run: |
           list="pcratio.png README.md"
@@ -49,42 +49,33 @@ jobs:
             rm -f taifex/*.* taifex/*
             rmdir taifex
           fi
-          
-      - name: Execute py script
+		  
+      - name: execute py script
         run: |
           python taifex.py
-
-      - name: Commit local repository
+		  
+      - name: Configure Git
+        run: |
+          git config --global user.email "<>"
+          git config --global user.name "GitHub Actions Bot"
+       
+      - name: commit local repository
         run: |
           # setup git
-          git config --global user.email "<>"
-          git config --global user.name "GitHub Actions Bot"
           git add -A
           timestamp=$(date)
-          git commit -m "更新時間: ${timestamp}" || exit 0
+          git commit -m "Latest data: ${timestamp}" || exit 0
           git push
-
-      - name: Checkout target repository
-        uses: actions/checkout@v4
-        with:
-          repository: white5168/taifex
-          token: ${{ secrets.ACCESS_GITHUB_TOKEN }} 
-
-      - name: Commit and push changes
+		  
+      - name: Clone target repository
+        run: git clone https://github.com/white5168/taifex.git
+          
+      - name: Move files to target repository
         run: |
-          mkdir taifex
-          if [ -f "pcratio.png" ]; then
-              cp pcratio.png taifex
-          fi
-          if [ -f "README.md" ]; then
-              cp README.md taifex
-          fi
-
+          cp pcratio.png taifex
+          cp README.md taifex
           cd taifex
-          git config --global user.email "<>"
-          git config --global user.name "GitHub Actions Bot"
-          git reset HEAD
           git add .
           timestamp=$(date)
-          git commit -m "更新時間: ${timestamp}"
-          git push -u origin main
+          git commit -m "Latest data: ${timestamp}"
+          git push https://white5168:${{secrets.ACCESS_GITHUB_TOKEN}}@github.com/white5168/taifex.git          
