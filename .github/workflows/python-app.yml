@@ -54,32 +54,13 @@ jobs:
         run: |
           python taifex.py
 
-      - name: Get current time
-        uses: josStorer/get-current-time@v2.0.2
-        id: current-time
-        with:
-          format: YYYY-MM-DD HH:mm:SS
-          utcOffset: "+08:00"
-          
-      #- name: Configure Git
-      #  run: |
-      #    git config --global user.email "<>"
-      #    git config --global user.name "GitHub Actions Bot"
-          
       - name: Checkout target repository
         uses: actions/checkout@v4
+        
+      - name: Push to Repository
+        uses: ad-m/github-push-action@master
         with:
+          github_token: ${{ secrets.ACCESS_GITHUB_TOKEN }}
+          branch: main
           repository: white5168/taifex
-          token: ${{ secrets.ACCESS_GITHUB_TOKEN }} 
-
-      - name: Commit and push another repository
-        run: |
-          #cp pcratio.png .
-          #cp README.md .
-          git config --global user.email "<>"
-          git config --global user.name "GitHub Actions Bot"
-          git add .
-          #timestamp=$(date)
-          #git commit -m "更新時間: ${timestamp}" || exit 0
-          git commit -m "更新時間: ${{ steps.current-time.outputs.formattedTime }}"
-          git push
+          path: "pcratio.png"
