@@ -41,6 +41,13 @@ jobs:
             rmdir taifex
           fi
           
+      - name: Get current time
+        uses: josStorer/get-current-time@v2.0.2
+        id: current-time
+        with:
+          format: YYYY-MM-DD HH:mm:SS
+          utcOffset: "+08:00"
+          
       - name: Configure git
         run: |
           git config --global user.name "github-actions[bot]"
