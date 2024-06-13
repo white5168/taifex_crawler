@@ -24,7 +24,10 @@ jobs:
         uses: szenius/set-timezone@v1.0
         with:
           timezoneLinux: "Asia/Taipei"
-          
+
+      - name: checkout repo content
+        uses: actions/checkout@v4
+        
       - name: Set up Python 3.10
         uses: actions/setup-python@v3
         with:
@@ -40,15 +43,12 @@ jobs:
         run: |
           python taifex.py
 
-      - name: checkout repo content
-        uses: actions/checkout@v4
-
       - name: Configure Git
         run: |
           git config --global user.email "<>"
           git config --global user.name "GitHub Actions Bot"
        
-      - name: commit 1
+      - name: commit local repository
         run: |
           # setup git
           git add -A
