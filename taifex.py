@@ -28,6 +28,7 @@ while base <= dt.datetime.today():
     res = requests.post(url, data = payload, headers = headers)
     data.append(pd.read_html(res.text)[0])    
     base += relativedelta(months = 1)
+    time.sleep(10)
 
 df = pd.concat(data)
 df['日期'] = pd.to_datetime(df['日期'])
