@@ -93,5 +93,9 @@ jobs:
           git config --global user.name "GitHub Actions Bot"
           git reset HEAD
           git add .
-          git commit -m "更新時間: ${{ steps.current-time.outputs.formattedTime }}"
-          git push
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to commit."
+          else
+            git commit -m "更新時間: ${{ steps.current-time.outputs.formattedTime }}" || exit 0
+            git push
+          fi
