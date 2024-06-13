@@ -58,14 +58,10 @@ jobs:
 
       - name: Clone target repository
         run: git clone https://github.com/white5168/taifex.git tmp
-        
-      - name: Copy files
-        run: |
-          mkdir copied_files
-          cp -r pcratio.png tmp/
           
       - name: Move files to target repository
         run: |
+          cp -r pcratio.png tmp/
           cd tmp
           git add .
           git commit -m "Add files via GitHub Actions"
