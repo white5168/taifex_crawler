@@ -59,12 +59,18 @@ jobs:
           git config --global user.email "<>"
           git config --global user.name "GitHub Actions Bot"
 
+      - name: Get current time
+        uses: josStorer/get-current-time@v2.0.2
+        id: current-time
+        with:
+          format: YYYYMMDD-HHmmSS
+          utcOffset: "+08:00"
+          
       - name: commit local repository
         run: |
           # setup git
           git add -A
-          timestamp=$(date)
-          git commit -m "Latest data: ${timestamp}" || exit 0
+          git commit -m "更新時間: ${{ steps.current-time.outputs.formattedTime }}" || exit 0
           git push
 
       - name: Clone target repository
@@ -76,6 +82,5 @@ jobs:
           cp README.md taifex
           cd taifex
           git add .
-          timestamp=$(date)
-          git commit -m "Latest data: ${timestamp}"
+          git commit -m "更新時間: ${{ steps.current-time.outputs.formattedTime }}"
           git push https://white5168:${{secrets.ACCESS_GITHUB_TOKEN}}@github.com/white5168/taifex.git          
