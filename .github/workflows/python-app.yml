@@ -60,12 +60,15 @@ jobs:
         with:
           format: YYYY-MM-DD HH:mm:SS
           utcOffset: "+08:00"
-
+          
+      - name: Configure Git
+        run: |
+          git config --global user.email "<>"
+          git config --global user.name "GitHub Actions Bot"
+          
       - name: Commit and push local repository
         run: |
           # setup git
-          git config --global user.email "<>"
-          git config --global user.name "GitHub Actions Bot"
           git add -A
           #timestamp=$(date)
           #git commit -m "更新時間: ${timestamp}" || exit 0
@@ -88,9 +91,8 @@ jobs:
           #    cp README.md taifex
           #fi
           #cd taifex
-          git config --global user.email "<>"
-          git config --global user.name "GitHub Actions Bot"
+
           git reset HEAD
-          git add .
+          git add pcratio.png README.md
           git commit -m "更新時間: ${{ steps.current-time.outputs.formattedTime }}"
           git push
