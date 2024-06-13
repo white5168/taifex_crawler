@@ -61,10 +61,10 @@ jobs:
           format: YYYY-MM-DD HH:mm:SS
           utcOffset: "+08:00"
           
-      - name: Configure Git
-        run: |
-          git config --global user.email "<>"
-          git config --global user.name "GitHub Actions Bot"
+      #- name: Configure Git
+      #  run: |
+      #    git config --global user.email "<>"
+      #    git config --global user.name "GitHub Actions Bot"
           
       - name: Checkout target repository
         uses: actions/checkout@v4
@@ -74,10 +74,8 @@ jobs:
 
       - name: Commit and push another repository
         run: |
-          mkdir taifex
-          cp pcratio.png taifex
-          cp README.md taifex
-          cd taifex
+          #cp pcratio.png .
+          #cp README.md .
           git config --global user.email "<>"
           git config --global user.name "GitHub Actions Bot"
           git add .
