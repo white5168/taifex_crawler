@@ -65,7 +65,7 @@ jobs:
           cd taifex
           git add -A
           git commit -m "Add files via GitHub Actions"
-          git push -u origin main 
+          git push
           
       #- name: commit
       #  run: |
