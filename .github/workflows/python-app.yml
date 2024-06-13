@@ -67,4 +67,9 @@ jobs:
           cd tmp
           git add .
           git commit -m "GitHub Actions"
-          git push  
+          git push
+
+      - name: Remove dir
+        run: |
+          rm -f tmp/*.*
+          rmdir tmp
