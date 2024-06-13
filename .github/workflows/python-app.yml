@@ -82,4 +82,4 @@ jobs:
           git add .
           timestamp=$(date)
           git commit -m "更新時間: ${timestamp}"
-          git push
+          git push -u origin main
