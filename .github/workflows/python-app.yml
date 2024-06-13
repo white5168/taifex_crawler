@@ -68,9 +68,9 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          mkdir tmp
-          cp pcratio.png tmp
-          cp README.md tmp
-          cd tmp
-          git add .
+          #mkdir tmp
+          #cp pcratio.png tmp
+          #cp README.md tmp
+          #cd tmp
+          git add pcratio.png README.md
           git commit -m "GitHub Actions" && git push || echo "Nochanges to commit"
