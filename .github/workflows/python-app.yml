@@ -73,8 +73,13 @@ jobs:
       - name: Commit and push changes
         run: |
           mkdir taifex
-          cp ./pcratio.png taifex
-          cp ./README.md taifex
+          if [ -f "pcratio.png" ]; then
+              cp pcratio.png taifex
+          fi
+          if [ -f "README.md" ]; then
+              cp README.md taifex
+          fi
+
           cd taifex
           git config --global user.email "<>"
           git config --global user.name "GitHub Actions Bot"
