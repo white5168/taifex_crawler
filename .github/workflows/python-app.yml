@@ -78,17 +78,21 @@ jobs:
         with:
           repository: white5168/taifex
           token: ${{ secrets.ACCESS_GITHUB_TOKEN }} 
-
+          
+      - name: Execute py script
+        run: |
+          python taifex.py
+          
       - name: Commit and push another repository
         run: |
-          mkdir taifex
-          if [ -f "pcratio.png" ]; then
-              cp pcratio.png taifex
-          fi
-          if [ -f "README.md" ]; then
-              cp README.md taifex
-          fi
-          cd taifex
+          #mkdir taifex
+          #if [ -f "pcratio.png" ]; then
+          #    cp pcratio.png taifex
+          #fi
+          #if [ -f "README.md" ]; then
+          #    cp README.md taifex
+          #fi
+          #cd taifex
           git config --global user.email "<>"
           git config --global user.name "GitHub Actions Bot"
           git add -A
