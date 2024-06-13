@@ -83,6 +83,7 @@ jobs:
           cd taifex
           git config --global user.email "<>"
           git config --global user.name "GitHub Actions Bot"
+          git reset HEAD
           git add .
           timestamp=$(date)
           git commit -m "更新時間: ${timestamp}"
