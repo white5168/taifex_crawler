@@ -61,8 +61,8 @@ jobs:
 
       - name: Remove dir
         run: |
-          if [ ! -d "tmp"]; then
-            rm -f tmp/*.*
+          if [-d "tmp"]; then
+            rm -f tmp/*.* tmp/*
             rmdir tmp
           fi
 
