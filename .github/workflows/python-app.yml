@@ -45,20 +45,13 @@ jobs:
           git config --global user.email "<>"
           git config --global user.name "GitHub Actions Bot"
        
-      - name: commit local repository
+      - name: Commit local repository
         run: |
           # setup git
           git add -A
           timestamp=$(date)
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
-
-
-      - name: Copy files
-        run: |
-          mkdir tmp
-          cp pcratio.png tmp
-          cp README.md tmp
 
       - name: Checkout target repository
         uses: actions/checkout@v4
@@ -68,6 +61,9 @@ jobs:
 
       - name: Commit and push changes
         run: |
+          mkdir tmp
+          cp pcratio.png tmp
+          cp README.md tmp
           cd tmp
           git add .
           git commit -m "GitHub Actions"
