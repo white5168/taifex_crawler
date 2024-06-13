@@ -17,6 +17,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Remove file and dir
+        run: |         
+          if [-d "taifex"]; then
+            rm -rf taifex/*
+            rm -rf taifex/.*
+            rmdir taifex
+          fi
+          
       - name: Configure git
         run: |
           git config --global user.name "github-actions[bot]"
