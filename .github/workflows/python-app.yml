@@ -54,6 +54,7 @@ jobs:
       - name: Execute py script
         run: |
           python taifex.py
+          echo $pwd
 
       - name: Get current time
         uses: josStorer/get-current-time@v2.0.2
@@ -79,8 +80,10 @@ jobs:
           repository: white5168/taifex
           token: ${{ secrets.ACCESS_GITHUB_TOKEN }} 
           
+          
       - name: Execute py script
         run: |
+          echo $pwd
           python taifex.py
           
       - name: Commit and push another repository
