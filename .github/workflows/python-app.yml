@@ -35,9 +35,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install lxml
           pip install -r requirements.txt
+          
       - name: execute py script
         run: |
           python taifex.py
+          
       - name: Configure Git
         run: |
           git config --global user.email "<>"
@@ -50,14 +52,23 @@ jobs:
           timestamp=$(date)
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
-      - name: Clone target repository
-        run: git clone https://github.com/white5168/taifex.git
-          
-      - name: Move files to target repository
+
+
+      - name: Copy files
         run: |
-          cp pcratio.png taifex
-          cp README.md taifex
-          cd taifex
+          mkdir tmp
+          cp pcratio.png tmp
+          cp README.md tmp
+
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          repository: white5168/taifex
+          token: ${{ secrets.ACCESS_GITHUB_TOKEN }} 
+
+      - name: Commit and push changes
+        run: |
+          cd tmp
           git add .
-          git commit -m "Add files via GitHub Actions"
-          git push https://white5168:${{secrets.ACCESS_GITHUB_TOKEN}}@github.com/white5168/taifex.git          
+          git commit -m "GitHub Actions"
+          git push  
