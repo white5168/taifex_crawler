@@ -45,9 +45,9 @@ jobs:
             fi
           done
           
-          if [-d "tmp"]; then
-            rm -f tmp/*.* tmp/*
-            rmdir tmp
+          if [-d "taifex"]; then
+            rm -f taifex/*.* taifex/*
+            rmdir taifex
           fi
           
       - name: Execute py script
@@ -75,10 +75,12 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          #mkdir tmp
-          #cp pcratio.png tmp
-          #cp README.md tmp
-          #cd tmp
+          mkdir taifex
+          cp pcratio.png taifex
+          cp README.md taifex
+          cd taifex
+          git config --global user.email "<>"
+          git config --global user.name "GitHub Actions Bot"
           git add .
           timestamp=$(date)
           git commit -m "更新時間: ${timestamp}"
