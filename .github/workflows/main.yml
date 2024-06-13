@@ -3,8 +3,6 @@ name: Test Get flow
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   schedule:
     - cron: '*/2 * * * *'
     
