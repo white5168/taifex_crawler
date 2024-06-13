@@ -59,6 +59,11 @@ jobs:
           repository: white5168/taifex
           token: ${{ secrets.ACCESS_GITHUB_TOKEN }} 
 
+      - name: Remove dir
+        run: |
+          rm -f tmp/*.*
+          rmdir tmp
+
       - name: Commit and push changes
         run: |
           mkdir tmp
@@ -68,8 +73,3 @@ jobs:
           git add .
           git commit -m "GitHub Actions"
           git push
-
-      - name: Remove dir
-        run: |
-          rm -f tmp/*.*
-          rmdir tmp
