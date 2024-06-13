@@ -84,6 +84,7 @@ jobs:
           git config --global user.email "<>"
           git config --global user.name "GitHub Actions Bot"
           git add -A
+          git status
           if git diff-index --quiet HEAD --; then
             echo "No changes to commit."
           else
