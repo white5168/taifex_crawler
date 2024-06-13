@@ -38,8 +38,8 @@ jobs:
 
       - name: Remove file and dir
         run: |
-          list = "pcratio.png README.md"
-          for i in ${list}; do
+          list="pcratio.png README.md"
+          for i in $list; do
             if [ -f ${i} ]; then
               rm ${i}
             fi
