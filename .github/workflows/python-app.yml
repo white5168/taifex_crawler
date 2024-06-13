@@ -25,9 +25,6 @@ jobs:
         with:
           timezoneLinux: "Asia/Taipei"
           
-      - name: checkout repo content
-        uses: actions/checkout@v4
-        
       - name: Set up Python 3.10
         uses: actions/setup-python@v3
         with:
@@ -38,35 +35,41 @@ jobs:
           python -m pip install --upgrade pip
           pip install lxml
           pip install -r requirements.txt
-          
-      - name: execute py script 1
+
+      - name: execute py script
         run: |
           python taifex.py
-          
+
+      - name: checkout repo content
+        uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "<>"
+          git config --global user.name "GitHub Actions Bot"
+       
       - name: commit 1
         run: |
           # setup git
-          git config --local user.name "GitHub Actions Bot"
-          git config --local user.email "<>"
           git add -A
           timestamp=$(date)
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
-          
-      - name: execute py script 2
+
+      - name: Clone target repository
+        run: git clone https://github.com/white5168/taifex.git tmp
+        
+      - name: Copy files
         run: |
-          python taifex.py
+          mkdir copied_files
+          cp -r pcratio.png tmp/
           
-      - name: commit 2
+      - name: Move files to target repository
         run: |
-          git remote remove origin
-          #git remote set-url origin https://github.com/white5168/taifex.git
-          git remote add origin https://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@github.com/white5168/taifex.git
-          git add -A
-          timestamp=$(date)
-          git commit -m "Latest data: ${timestamp}" || exit 0
-          git branch -M main
-          git push -u origin main
+          cd tmp
+          git add .
+          git commit -m "Add files via GitHub Actions"
+          git push origin main 
           
       #- name: commit
       #  run: |
