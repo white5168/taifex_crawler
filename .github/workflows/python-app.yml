@@ -81,14 +81,16 @@ jobs:
 
       - name: Commit and push another repository
         run: |
+          mkdir taifex
+          if [ -f "pcratio.png" ]; then
+              cp pcratio.png taifex
+          fi
+          if [ -f "README.md" ]; then
+              cp README.md taifex
+          fi
+          cd taifex
           git config --global user.email "<>"
           git config --global user.name "GitHub Actions Bot"
           git add -A
-          git status
-          if git diff-index --quiet HEAD --; then
-            echo "No changes to commit."
-          else
-            git commit -m "更新時間: ${{ steps.current-time.outputs.formattedTime }}" 
-            git status
-            git push
-          fi
+          git commit -m "更新時間: ${{ steps.current-time.outputs.formattedTime }}"
+          git push
