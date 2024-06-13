@@ -36,7 +36,7 @@ jobs:
           pip install lxml
           pip install -r requirements.txt
           
-      - name: execute py script
+      - name: Execute py script
         run: |
           python taifex.py
           
@@ -61,8 +61,10 @@ jobs:
 
       - name: Remove dir
         run: |
-          rm -f tmp/*.*
-          rmdir tmp
+          if [ ! -d "tmp"]; then
+            rm -f tmp/*.*
+            rmdir tmp
+          fi
 
       - name: Commit and push changes
         run: |
@@ -71,5 +73,4 @@ jobs:
           cp README.md tmp
           cd tmp
           git add .
-          git commit -m "GitHub Actions"
-          git push
+          git commit -m "GitHub Actions" && git push || echo "Nochanges to commit"
