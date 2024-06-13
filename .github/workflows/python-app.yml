@@ -65,7 +65,7 @@ jobs:
           cd taifex
           git add -A
           git commit -m "Add files via GitHub Actions"
-          git push
+          git push https://white5168:${{secrets.ACCESS_GITHUB_TOKEN}}@github.com/white5168/taifex.git
           
       #- name: commit
       #  run: |
