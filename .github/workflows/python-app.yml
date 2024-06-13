@@ -79,5 +79,7 @@ jobs:
           #cp pcratio.png tmp
           #cp README.md tmp
           #cd tmp
-          git add pcratio.png README.md
-          git commit -m "GitHub Actions" && git push || echo "No changes to commit"
+          git add .
+          timestamp=$(date)
+          git commit -m "Latest data: ${timestamp}" || exit 0
+          git push
