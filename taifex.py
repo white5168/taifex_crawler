@@ -16,20 +16,20 @@ payload = {
 }
 
 headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'}
-res = requests.post(url, data = payload, headers = headers)
-df = pd.read_html(res.text)[0]
-#data = []
-#base = dt.datetime.today() - relativedelta(months = 1)
-#while base <= dt.datetime.today():
-#    payload['queryStartDate'] = base.replace(day = 1).strftime('%Y/%m/%d')
-#    payload['queryEndDate'] = (base.replace(day = 1) + 
-#               relativedelta(months = 1) - 
-#               relativedelta(days = 1)).strftime('%Y/%m/%d')
-#    res = requests.post(url, data = payload, headers = headers)
-#    data.append(pd.read_html(res.text)[0])    
-#    base += relativedelta(months = 1)
+#res = requests.post(url, data = payload, headers = headers)
+#df = pd.read_html(res.text)[0]
+data = []
+base = dt.datetime.today() - relativedelta(months = 6)
+while base <= dt.datetime.today():
+    payload['queryStartDate'] = base.replace(day = 1).strftime('%Y/%m/%d')
+    payload['queryEndDate'] = (base.replace(day = 1) + 
+               relativedelta(months = 1) - 
+               relativedelta(days = 1)).strftime('%Y/%m/%d')
+    res = requests.post(url, data = payload, headers = headers)
+    data.append(pd.read_html(res.text)[0])    
+    base += relativedelta(months = 1)
 
-#df = pd.concat(data)
+df = pd.concat(data)
 df['日期'] = pd.to_datetime(df['日期'])
 df = df.sort_values('日期').reset_index(drop = True)
 plt.figure(figsize = (6, 3))
