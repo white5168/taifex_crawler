@@ -57,15 +57,15 @@ jobs:
           git push
 
       - name: Clone target repository
-        run: git clone https://github.com/white5168/taifex.git tmp_taifex
+        run: git clone https://github.com/white5168/taifex.git tmp
           
       - name: Move files to target repository
         run: |
-          cp -r ./pcratio.png tmp_taifex/
-          cd tmp_taifex
-          git add .
+          cp -r pcratio.png tmp
+          cd tmp
+          git add -A
           git commit -m "Add files via GitHub Actions"
-          git push origin main 
+          git push -u origin main 
           
       #- name: commit
       #  run: |
