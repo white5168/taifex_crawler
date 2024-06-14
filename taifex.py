@@ -25,6 +25,7 @@ while base <= dt.datetime.today():
     payload['queryEndDate'] = (base.replace(day = 1) + 
                relativedelta(months = 1) - 
                relativedelta(days = 1)).strftime('%Y/%m/%d')
+    print(payload)
     res = requests.post(url, data = payload, headers = headers)
     data.append(pd.read_html(res.text)[0])    
     base += relativedelta(months = 1)
