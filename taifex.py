@@ -19,7 +19,7 @@ headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/5
 #res = requests.post(url, data = payload, headers = headers)
 #df = pd.read_html(res.text)[0]
 data = []
-base = dt.datetime.today() - relativedelta(months = 2)
+base = dt.datetime.today() - relativedelta(months = 1)
 while base <= dt.datetime.today():
     payload['queryStartDate'] = base.replace(day = 1).strftime('%Y/%m/%d')
     payload['queryEndDate'] = (base.replace(day = 1) + 
